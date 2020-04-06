@@ -122,7 +122,7 @@
 			]
 		}
 	],
-	"listInvalidPageLinks": true,
+	"listInvalidPageLinks": false,
 	"output": "pages",
 	"reflectionNavigationTitle": "Development API",
 	"replaceGlobalsPage": true,
