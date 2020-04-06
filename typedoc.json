@@ -2,7 +2,7 @@
 	"inputFiles": [
 		"./src"
 	],
-	"listInvalidSymbolLinks": true,
+	"listInvalidSymbolLinks": false,
 	"media": "./docs-source/static",
 	"name": "TypeDoc Pages Plugin",
 	"out": "docs",
