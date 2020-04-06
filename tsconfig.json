@@ -1,0 +1,29 @@
+{
+	"compileOnSave": false,
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"sourceMap": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"downlevelIteration": true,
+		"moduleResolution": "node",
+		"baseUrl": "src",
+		"skipLibCheck": true,
+		"outDir": "./dist/plugin",
+		"lib": [
+			"es2017", "dom"
+		]
+	},
+	"exclude": [
+		"node_modules",
+	],
+	"include": [
+		"./src/**/*.ts",
+		"./node_modules/@types/node/index.d.ts"
+	],
+	"atom": {
+		"rewriteTsconfig": false
+	}
+}
+  

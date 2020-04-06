@@ -1,0 +1,11 @@
+{
+	"inputFiles": [
+		"./src"
+	],
+	"listInvalidSymbolLinks": true,
+	"media": "./docs-source/static",
+	"name": "TypeDoc Pages Plugin",
+	"out": "docs",
+	"readme": "./docs-source/introduction.md",
+	"theme": "pages-plugin"
+}

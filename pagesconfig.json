@@ -1,0 +1,131 @@
+{
+	"groups": [
+		{
+			"title": "Getting Started",
+			"source": "./getting-started",
+			"pages": [
+				{
+					"title": "Quick Start",
+					"source": "./quick-start.md"
+				},
+				{
+					"title": "Creating Pages",
+					"source": "./creating-pages.md"
+				},
+				{
+					"title": "Page Organization",
+					"source": "./page-organization.md",
+					"children": [
+						{
+							"title": "Page Groups",
+							"source": "./organization/page-groups.md"
+						},
+						{
+							"title": "Child Pages",
+							"source": "./organization/child-pages.md"
+						},
+						{
+							"title": "Page Sections",
+							"source": "./organization/page-sections.md"
+						}
+					]
+				}
+			]
+		},
+		{
+			"output": "configuration",
+			"title": "Configuration",
+			"pages": [
+				{
+					"title": "Configuration File",
+					"source": "./configuration/configuration-file.md"
+				},
+				{
+					"title": "Reflection Navigation Title",
+					"source": "./configuration/reflection-navigation-title.md"
+				},
+				{
+					"title": "Search Integration",
+					"source": "./configuration/search-integration.md"
+				}
+			]
+		},
+		{
+			"title": "Advanced Content",
+			"source": "./advanced-content",
+			"pages": [
+				{
+					"title": "Images",
+					"source": "./images.md"
+				},
+				{
+					"title": "Code Links",
+					"source": "./code-links.md"
+				},
+				{
+					"title": "Page Links",
+					"source": "./page-links.md",
+					"output": "page-links.html"
+				}
+			]
+		},
+		{
+			"output": "themes",
+			"title": "Themes",
+			"source": "themes",
+			"pages": [
+				{
+					"title": "Built-In Theme",
+					"source": "./built-in-theme.md"
+				},
+				{
+					"title": "Custom Themes",
+					"output": "custom",
+					"source": "custom",
+					"groups": [
+						{
+							"output": "basic",
+							"title": "Custom Theme Basics",
+							"source": "basics",
+							"pages": [
+								{
+									"title": "Overview",
+									"source": "./overview.md"
+								},
+								{
+									"title": "Page Rendering",
+									"source": "./page-rendering.md"
+								},
+								{
+									"title": "Navigation Rendering",
+									"source": "./navigation-rendering.md"
+								}
+							]
+						},
+						{
+							"output": "advanced",
+							"title": "Advanced Custom Themes",
+							"source": "advanced",
+							"pages": [
+								{
+									"title": "Search Integration",
+									"source": "search-integration.md"
+								},
+								{
+									"title": "Customizing Template Names",
+									"source": "customizing-template-names.md"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"listInvalidPageLinks": true,
+	"output": "pages",
+	"reflectionNavigationTitle": "Development API",
+	"replaceGlobalsPage": true,
+	"separatePluginNavigation": true,
+	"source": "./docs-source"
+}
