@@ -1,20 +1,14 @@
-name: Release
+name: Build
 
 on:
   push:
-    branches:
+    branches-ignore:
       - master
 
 jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    if: "! contains(github.event.head_commit.message, '[skip ci]')"
-    steps:
-      - run: echo "${{ github.event.head_commit.message }}"
-  release:
-    name: Release
-    needs: prepare
-    runs-on: ubuntu-latest
+  ci:
+    name: Continous Integration
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -27,8 +21,3 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
