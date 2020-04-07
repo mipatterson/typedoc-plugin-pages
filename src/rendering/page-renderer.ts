@@ -151,7 +151,6 @@ export class PageRenderer {
 	private _replaceGlobalsPage(globalsMapping: UrlMapping, templateMapping: UrlMapping): void {
 		globalsMapping.url = templateMapping.url;
 		globalsMapping.model.url = templateMapping.url;
-		console.log(globalsMapping.model.pagesPlugin);
 	}
 
 	private _getPluginModelMetadata(isPluginItem: boolean, item?: BaseItem, type?: ModelItemType): UrlMappingModelPluginMetadata {
