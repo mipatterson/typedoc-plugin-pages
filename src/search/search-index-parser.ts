@@ -3,26 +3,58 @@
  * @module Search
  */
 
+import { join } from "path";
 import { readFileSync, writeFileSync } from "fs";
 import { SearchIndex } from "./search-index";
 
 // TODO: Document this
 export class SearchIndexParser {
-	public parseSearchIndex(searchJsLocation: string): SearchIndex {
+	public parseSearchIndex(searchFileLocation: string): SearchIndex {
 		try {
-			const searchJsContents = this._readSearchJsFile(searchJsLocation);
+			const fileExtension = searchFileLocation.split('.').pop() as ('js' | 'json');
+
+			if (fileExtension === 'json') {
+				const searchJsonContents = this._readSearchJsonFile(searchFileLocation);
+
+				return searchJsonContents;
+			}
+
+			const searchJsContents = this._readSearchJsFile(searchFileLocation);
+
 			return this._parseIndexFromJs(searchJsContents);
 		} catch (e) {
 			throw new Error(`Failed to parse search index. ${e.message}`);
 		}
 	}
 
-	public writeSearchIndex(index: SearchIndex, searchJsLocation: string): void {
+	public writeSearchIndex(index: SearchIndex, searchPathLocation: string): void {
 		try {
-			const contents = `var typedoc = typedoc || {}; typedoc.search = typedoc.search || {}; typedoc.search.data = ${JSON.stringify(index)};`;
-			writeFileSync(searchJsLocation, contents, "utf-8");
+			this._writeSearchJsFile(index, searchPathLocation);
+			this._writeSearchJsonFile(index, searchPathLocation);
 		} catch (e) {
 			throw new Error(`Failed to write search index to disk. ${e.message}`);
+		}
+	}
+
+	private _writeSearchJsFile(index: SearchIndex, searchFileLocation: string): void {
+		try {
+			const contents = `var typedoc = typedoc || {}; typedoc.search = typedoc.search || {}; typedoc.search.data = ${JSON.stringify(index)};`;
+			const fileLocation = join(searchFileLocation, 'search.js');
+
+			writeFileSync(fileLocation, contents, "utf8");
+		} catch (e) {
+			throw new Error(`Failed to write search.js file. ${e.message}`);
+		}
+	}
+
+	private _writeSearchJsonFile(index: SearchIndex, searchFileLocation: string): void {
+		try {
+			const contents = JSON.stringify(index);
+			const fileLocation = join(searchFileLocation, 'search.json');
+
+			writeFileSync(fileLocation, contents, "utf8");
+		} catch (e) {
+			throw new Error(`Failed to write search.json file. ${e.message}`);
 		}
 	}
 
@@ -31,6 +63,14 @@ export class SearchIndexParser {
 			return readFileSync(path, "utf8");
 		} catch (e) {
 			throw new Error(`Failed to read search.js file. ${e.message}`);
+		}
+	}
+
+	private _readSearchJsonFile(path: string): SearchIndex {
+		try {
+			return JSON.parse(readFileSync(path, "utf8"));
+		} catch (e) {
+			throw new Error(`Failed to read search.json file. ${e.message}`);
 		}
 	}
 

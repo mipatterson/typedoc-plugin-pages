@@ -2,7 +2,7 @@
  * @packageDocumentation
  * @module Search
  */
-
+import { existsSync } from "fs";
 import { join } from "path";
 import { RendererEvent } from "typedoc/dist/lib/output/events";
 import { PluginOptions } from "../options/models/";
@@ -36,18 +36,34 @@ export class SearchManager {
 				return;
 			}
 
+			const indexPathname = this._getSearchIndexPath(event);
 			const indexLocation = this._getSearchIndexLocation(event);
 			const index = this._parser.parseSearchIndex(indexLocation);
+			
 			this._updateExistingIndexRows(index);
 			this._addPagesToIndex(index);
-			this._parser.writeSearchIndex(index, indexLocation);
+			this._parser.writeSearchIndex(index, indexPathname);
 		} catch (e) {
 			throw new Error(`Failed to populate search index. ${e.message}`);
 		}
 	}
 
+	private _getSearchIndexPath(event: RendererEvent): string {
+		const assetsPath = join(event.outputDirectory, "assets", "js");
+
+		return assetsPath;
+	}
+
 	private _getSearchIndexLocation(event: RendererEvent): string {
-		return join(event.outputDirectory, "assets", "js", "search.js");
+		const assetsPath = this._getSearchIndexPath(event);
+		const JSFile = join(assetsPath, 'search.js');
+		const JSONFile = join(assetsPath, 'search.json');
+
+		if (existsSync(JSONFile)) {
+			return JSONFile;
+		}
+		
+		return JSFile;
 	}
 
 	private _updateExistingIndexRows(index: SearchIndex): void {
