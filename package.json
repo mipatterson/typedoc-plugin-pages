@@ -55,7 +55,7 @@
     "rimraf": "^3.0.2",
     "semantic-release": "^17.0.4",
     "ts-jest": "^25.2.1",
-    "typedoc": "^0.16.10",
+    "typedoc": "^0.17.6",
     "typedoc-plugin-external-module-name": "^3.0.0",
     "typemoq": "^2.1.0",
     "typescript": "^3.8.2"
@@ -64,5 +64,9 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "compare-versions": "^3.6.0",
+    "typedoc-default-themes": "^0.10.1"
   }
 }

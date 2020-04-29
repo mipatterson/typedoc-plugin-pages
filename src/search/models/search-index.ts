@@ -3,12 +3,12 @@
  * @module Search
  */
 
-import { IndexRow } from "./index-row";
+import { IndexDataRow } from "./index-row";
 
 // TODO: document this
-export interface SearchIndex {
+export interface IndexData {
 	kinds: {
 		[id: string]: string;
 	};
-	rows: IndexRow[];
+	rows: IndexDataRow[];
 }

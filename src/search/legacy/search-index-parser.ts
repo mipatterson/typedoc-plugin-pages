@@ -4,11 +4,11 @@
  */
 
 import { readFileSync, writeFileSync } from "fs";
-import { SearchIndex } from "./search-index";
+import { IndexData } from "../models/search-index";
 
 // TODO: Document this
 export class SearchIndexParser {
-	public parseSearchIndex(searchJsLocation: string): SearchIndex {
+	public parseSearchIndex(searchJsLocation: string): IndexData {
 		try {
 			const searchJsContents = this._readSearchJsFile(searchJsLocation);
 			return this._parseIndexFromJs(searchJsContents);
@@ -17,7 +17,7 @@ export class SearchIndexParser {
 		}
 	}
 
-	public writeSearchIndex(index: SearchIndex, searchJsLocation: string): void {
+	public writeSearchIndex(index: IndexData, searchJsLocation: string): void {
 		try {
 			const contents = `var typedoc = typedoc || {}; typedoc.search = typedoc.search || {}; typedoc.search.data = ${JSON.stringify(index)};`;
 			writeFileSync(searchJsLocation, contents, "utf-8");
@@ -34,7 +34,7 @@ export class SearchIndexParser {
 		}
 	}
 
-	private _parseIndexFromJs(js: string): SearchIndex {
+	private _parseIndexFromJs(js: string): IndexData {
 		try {
 			const searchString = "typedoc.search.data = ";
 			const startIndex = js.indexOf(searchString);

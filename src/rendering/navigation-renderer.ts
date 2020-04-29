@@ -3,7 +3,6 @@
  * @module Rendering
  */
 
-import { NavigationItem } from "typedoc";
 import { PageEvent } from "typedoc/dist/lib/output/events";
 import { PluginOptions } from "../options/models/";
 import { BaseItem, ChildPage, Page, PageDictionary, PageGroup, PageSection } from "../pages/models/";
@@ -48,22 +47,6 @@ export class NavigationRenderer {
 
 		const pluginNavigationItems = this._getPluginNavigationItems(event, isPluginItem);
 
-		if (this._options.separatePluginNavigation) {
-			this._addSeparatePluginNavigation(event, pluginNavigationItems);
-		} else {
-			this._addPluginNavigationToReflectionNavigation(event, pluginNavigationItems);
-		}
-	}
-
-	private _addSeparatePluginNavigation(event: PageEvent, pluginItems: PluginNavigationItem[]): void {
-		const rootItem = new NavigationItem();
-		rootItem.children = pluginItems;
-		(event as any).pagesPlugin = {
-			navigation: rootItem,
-		};
-	}
-
-	private _addPluginNavigationToReflectionNavigation(event: PageEvent, pluginItems: PluginNavigationItem[]): void {
 		// Clear out all previously added plugin items
 		const nonPluginItems = event.navigation.children.filter((item: PluginNavigationItem) => {
 			return !item.isPluginItem || item.isReflectionNavigationTitle;
@@ -71,7 +54,7 @@ export class NavigationRenderer {
 
 		// Add provided items to beginning of navigation
 		event.navigation.children = [
-			...pluginItems,
+			...pluginNavigationItems,
 			...nonPluginItems,
 		];
 	}

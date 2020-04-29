@@ -4,7 +4,7 @@
  */
 
 // TODO: document this
-export interface IndexRow {
+export interface IndexDataRow {
 	id: number;
 	kind: number;
 	name: string;

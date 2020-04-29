@@ -3,19 +3,20 @@
  * @module Plugin
  */
 
+import { Application } from "typedoc/dist/";
 import { Converter } from "typedoc/dist/lib/converter/converter";
 import { Component, RendererComponent } from "typedoc/dist/lib/output/components";
 import { MarkdownEvent, PageEvent, RendererEvent } from "typedoc/dist/lib/output/events";
 import { PLUGIN_NAME } from "./constants";
-import { OptionManager } from "./options/option-manager";
 import { PageLinkParser } from "./links/page-link-parser";
+import { OptionManager } from "./options/option-manager";
 import { OptionValidator } from "./options/option-validator";
 import { PageDictionaryFactory } from "./pages/page-dictionary-factory";
 import { NavigationItemFactory } from "./rendering/navigation-item-factory";
 import { NavigationRenderer } from "./rendering/navigation-renderer";
 import { PageRenderer } from "./rendering/page-renderer";
-import { SearchIndexParser } from "./search/search-index-parser";
 import { SearchManager } from "./search/search-manager";
+import { SearchManagerFactory } from "./search/search-manager-factory";
 import { ThemeManager } from "./theme/theme-manager";
 
 /**
@@ -29,6 +30,7 @@ export class PagesPlugin extends RendererComponent {
 	private _pageRenderer: PageRenderer;
 	private _navigationRenderer: NavigationRenderer;
 	private _pageLinkParser: PageLinkParser;
+	private _searchManagerFactory: SearchManagerFactory;
 	private _searchManager: SearchManager;
 
 	/**
@@ -36,8 +38,9 @@ export class PagesPlugin extends RendererComponent {
 	 */
   	public initialize(): void {
 		this._optionManager = new OptionManager(new OptionValidator());
-		this._themeManager = new ThemeManager();
+		this._themeManager = new ThemeManager(Application.VERSION);
 		this._pageDictionaryFactory = new PageDictionaryFactory();
+		this._searchManagerFactory = new SearchManagerFactory(Application.VERSION);
 		
 		// Listen for TypeDoc Converter events
 		this.listenTo(this.application.converter, {
@@ -74,7 +77,7 @@ export class PagesPlugin extends RendererComponent {
 		this._pageRenderer = new PageRenderer(options, pageDictionary);
 		this._navigationRenderer = new NavigationRenderer(options, pageDictionary, new NavigationItemFactory());
 		this._pageLinkParser = new PageLinkParser(options, pageDictionary, this.application.logger);
-		this._searchManager = new SearchManager(options, pageDictionary, new SearchIndexParser());
+		this._searchManager = this._searchManagerFactory.create(options, pageDictionary);
 
 		// Generate pages to be rendered
 		this._pageRenderer.addPluginDataToAllPages(event);

@@ -23,7 +23,6 @@ export class OptionValidator {
 		defaultOptionAndValidateIsString(options, "output", Constants.DEFAULT_OUTPUT);
 		defaultOptionAndValidateIsString(options, "reflectionNavigationTitle", Constants.DEFAULT_REFLECTION_NAV_TITLE);
 		defaultOptionAndValidateIsBoolean(options, "replaceGlobalsPage", Constants.DEFAULT_REPLACE_GLOBALS_PAGE);
-		defaultOptionAndValidateIsBoolean(options, "separatePluginNavigation", Constants.DEFAULT_SEPARATE_PLUGIN_NAVIGATION);
 		defaultOptionAndValidateIsString(options, "source", ".");
 
 		for (const group of options.groups) {
