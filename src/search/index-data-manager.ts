@@ -5,7 +5,7 @@
 
 import { IndexData } from "./models/search-index";
 import { IndexDataRow } from "./models/index-row";
-import { Page, PageBase, PageDictionary, PageGroup } from "../pages/models";
+import { Page, PageBase, PageDictionary, PageGroup, PageSection } from "../pages/models";
 
 // TODO: Document this
 export class IndexDataManager {
@@ -42,8 +42,12 @@ export class IndexDataManager {
 
 	private _addGroupToIndex(index: IndexData, group: PageGroup): void {
 		for (const groupItem of group.pages) {
-			if (groupItem instanceof PageBase) { // TODO: Figure out what to do with sections and groups
+			if (groupItem instanceof PageBase) {
 				this._addPageToIndex(index, groupItem);
+			} else if (groupItem instanceof PageSection) {
+				for (const group of groupItem.groups) {
+					this._addGroupToIndex(index, group);
+				}
 			}
 		}
 	}
@@ -64,8 +68,12 @@ export class IndexDataManager {
 	
 		if (page instanceof Page) {
 			for (const childItem of page.children) {
-				if (childItem instanceof PageBase) { // TODO: Figure out what to do with sections and groups
+				if (childItem instanceof PageBase) {
 					this._addPageToIndex(index, childItem);
+				} else if (childItem instanceof PageSection) {
+					for (const group of childItem.groups) {
+						this._addGroupToIndex(index, group);
+					}
 				}
 			}
 		}
