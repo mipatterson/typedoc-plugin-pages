@@ -1,0 +1,21 @@
+{
+  "name": "typedoc-plugin-pages-test-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "typedoc": "^0.17.6",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "clean:doc": "rimraf ./dist",
+    "clean:plugin": "rimraf ./node_modules/typedoc-plugin-pages",
+    "clean": "npm run clean:doc && npm run clean:plugin",
+    "doc": "npm run clean:doc && typedoc ./src"
+  }
+}

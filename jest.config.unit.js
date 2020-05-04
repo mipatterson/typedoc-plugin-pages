@@ -3,5 +3,7 @@ const ts_preset = require("ts-jest/jest-preset");
 
 module.exports = merge.recursive(ts_preset, {
 	collectCoverage: true,
-	testRegex: "./test/.*.ts"
+	coverageDirectory: "./artifacts/unit-test-coverage",
+	displayName: "Unit Tests",
+	testRegex: "./test/unit/.*.test.ts"
 });

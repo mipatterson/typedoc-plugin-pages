@@ -14,5 +14,6 @@
 	"rules": {
 		"@typescript-eslint/no-explicit-any": "off",
 		"semi": "error"
-	}
+	},
+	"ignorePatterns": ["jest.config.integration.js", "jest.config.unit.js", "node_modules/", "test/integration/test-project/node_modules/"]
 }
