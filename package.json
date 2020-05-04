@@ -23,7 +23,7 @@
     "test": "npm run test.lint && npm run test.unit && npm run test.integration",
     "test.integration": "jest --config ./jest.config.integration.js --runInBand",
     "test.lint": "eslint --ext .js,.ts src",
-    "test.unit": "jest --config ./jest.config.unit.js",
+    "test.unit": "jest --config ./jest.config.unit.js --runInBand",
     "test.unit.watch": "jest --config ./jest.config.unit.js --watchAll"
   },
   "repository": {
