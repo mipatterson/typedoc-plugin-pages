@@ -1,6 +1,6 @@
 import { pathExists } from "fs-extra";
+import { buildHTMLOutputPath } from "../../helpers/html-output-path-helpers";
 import { DependencyUtilities, TypeDocUtilities } from "../../utilities";
-import { Constants } from "../../constants";
 
 export const executeTypeDocWithoutPlugin = (): void => {
 	describe("TypeDoc (no plugin)", () => {
@@ -14,7 +14,7 @@ export const executeTypeDocWithoutPlugin = (): void => {
 		});
 
 		test("generates output", async () => {
-			const outputExists = await pathExists(Constants.RELATIVE_OUTPUT_PATH);
+			const outputExists = await pathExists(buildHTMLOutputPath("index.html"));
 			expect(outputExists).toBe(true);
 		});
 	});

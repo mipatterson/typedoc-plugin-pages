@@ -1,10 +1,6 @@
 import { pathExists } from "fs-extra";
+import { buildHTMLOutputPath } from "../../helpers/html-output-path-helpers";
 import { DependencyUtilities, PluginUtilities, TypeDocUtilities } from "../../utilities";
-import { join } from "path";
-
-const getOutputPath = (relativePath: string): string => { // TODO: fix
-	return join("C:/Users/micha/Projects/typedoc-plugin-pages/test/integration/project/dist", relativePath);
-};
 
 export const executeTypeDocWithPlugin = (): void => {
 	describe("TypeDoc (with Pages Plugin)", () => {
@@ -20,7 +16,7 @@ export const executeTypeDocWithPlugin = (): void => {
 
 		test("generates output", async () => {
 			const expectFileToExist = async (relativePath: string): Promise<void> => {
-				const exists = await pathExists(getOutputPath(relativePath));
+				const exists = await pathExists(buildHTMLOutputPath(relativePath));
 				expect(exists).toBe(true);
 			};
 
