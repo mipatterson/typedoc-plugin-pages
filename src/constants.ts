@@ -19,4 +19,3 @@ export const DEFAULT_LIST_INVALID_PAGE_LINKS = false;
 export const DEFAULT_OUTPUT = "pages";
 export const DEFAULT_REFLECTION_NAV_TITLE = "API";
 export const DEFAULT_REPLACE_GLOBALS_PAGE = false;
-export const DEFAULT_SEPARATE_PLUGIN_NAVIGATION = false;

@@ -70,13 +70,6 @@ export interface PluginOptions {
 	replaceGlobalsPage?: boolean;
 
 	/**
-	 * Whether or not to separate the plugin navigation items from the standard TypeDoc reflection navigation items
-	 * 
-	 * This defaults to false.
-	 */
-	separatePluginNavigation?: boolean;
-
-	/**
 	 * Root directory where all page source files live
 	 * 
 	 * By default this will point to the directory that TypeDoc is run from.

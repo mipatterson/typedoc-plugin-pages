@@ -126,6 +126,5 @@
 	"output": "pages",
 	"reflectionNavigationTitle": "Development API",
 	"replaceGlobalsPage": true,
-	"separatePluginNavigation": true,
 	"source": "./docs-source"
 }

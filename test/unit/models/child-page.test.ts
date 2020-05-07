@@ -5,6 +5,8 @@ import * as fs from "fs";
 import * as path from "path";
 
 describe("ChildPage", () => {
+	let originalJoin: any;
+	let joinMock: any;
 	let definition: ChildPageDefinition;
 	const parentDirectory = "./parent/directory";
 	let parentMock: IMock<Page>;
@@ -12,10 +14,10 @@ describe("ChildPage", () => {
 
 	let sut: ChildPage;
 
-	const joinMock = jest.fn((p1: string, p2: string) => "joined/url");
-	(path as any).join = joinMock;
-
 	beforeEach(() => {
+		originalJoin = path.join;
+		joinMock = jest.fn((p1: string, p2: string) => "joined/url");
+		(path as any).join = joinMock;
 		parentMock = Mock.ofType<Page>();
 		parentChildrenMock = Mock.ofType<ChildPage[]>();
 		parentMock.setup(m => m.children).returns(() => parentChildrenMock.object);
@@ -27,6 +29,10 @@ describe("ChildPage", () => {
 		};
 
 		sut = new ChildPage(definition, parentDirectory, parentMock.object);
+	});
+
+	afterEach(() => {
+		(path as any).join = originalJoin;
 	});
 
 	describe("constructor()", () => {

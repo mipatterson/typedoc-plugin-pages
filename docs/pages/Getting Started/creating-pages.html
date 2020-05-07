@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Creating Pages | TypeDoc Pages Plugin</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for TypeDoc Pages Plugin">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../../assets/css/main.css">
 	<link rel="stylesheet" href="../../assets/css/pages.css">
@@ -14,7 +14,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../../assets/js/search.js" data-base="../..">
+				<div class="table-cell" id="tsd-search" data-index="../../assets/js/search.json" data-base="../..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -95,15 +95,15 @@
 					<h3>1. Create a new Markdown page</h3>
 				</a>
 				<p>Create a new Markdown page and give it some content.</p>
-				<a href="#codeexamplepagemdcode" id="codeexamplepagemdcode" style="color: inherit; text-decoration: none;">
+				<a href="#examplepagemd" id="examplepagemd" style="color: inherit; text-decoration: none;">
 					<h4><code>ExamplePage.md</code></h4>
 				</a>
 				<pre><code class="language-markdown"><span class="hljs-section">### Header</span>
 
 Super important list:
-<span class="hljs-bullet">- </span>Item 1
-<span class="hljs-bullet">- </span>Item 2
-<span class="hljs-bullet">- </span>Item 3</code></pre>
+<span class="hljs-bullet">-</span> Item 1
+<span class="hljs-bullet">-</span> Item 2
+<span class="hljs-bullet">-</span> Item 3</code></pre>
 				<a href="#2-define-a-page-group" id="2-define-a-page-group" style="color: inherit; text-decoration: none;">
 					<h3>2. Define a page group</h3>
 				</a>
@@ -114,7 +114,7 @@ Super important list:
 				</ul>
 				<p>Your configuration must include at least one top-level page group.</p>
 				<p>To create a top-level page group, first, add a &quot;groups&quot; property to your configuration file. Next, add a new group definition with a &quot;title&quot; property and an empty &quot;pages&quot; array.</p>
-				<a href="#codepagesconfigjsoncode" id="codepagesconfigjsoncode" style="color: inherit; text-decoration: none;">
+				<a href="#pagesconfigjson" id="pagesconfigjson" style="color: inherit; text-decoration: none;">
 					<h4><code>pagesconfig.json</code></h4>
 				</a>
 				<pre><code class="language-json">{
@@ -130,7 +130,7 @@ Super important list:
 					<h3>3. Define your page</h3>
 				</a>
 				<p>Add a new page definition to your newly created group, defining a title and source:</p>
-				<a href="#codepagesconfigjsoncode-1" id="codepagesconfigjsoncode-1" style="color: inherit; text-decoration: none;">
+				<a href="#pagesconfigjson-1" id="pagesconfigjson-1" style="color: inherit; text-decoration: none;">
 					<h4><code>pagesconfig.json</code></h4>
 				</a>
 				<pre><code class="language-json">{
@@ -158,7 +158,7 @@ Super important list:
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary pages-plugin-nav">
+			<nav class="tsd-navigation primary">
 				<ul>
 					<li class="label pp-nav pp-group">
 						<span>Getting <wbr>Started</span>
@@ -205,41 +205,37 @@ Super important list:
 					<li class=" pp-nav pp-page">
 						<a href="../themes/custom/basic/overview.html">Custom <wbr>Themes</a>
 					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation primary">
-				<ul>
 					<li class="label pp-nav pp-group">
 						<span>Development API</span>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../../modules/constants.html">Constants</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../../modules/links.html">Links</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../../modules/models.html">Models</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../../modules/options.html">Options</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../../modules/pages.html">Pages</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../../modules/plugin.html">Plugin</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../../modules/rendering.html">Rendering</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../../modules/search.html">Search</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../../modules/theme.html">Theme</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../../modules/utilities.html">Utilities</a>
 					</li>
 				</ul>
@@ -256,57 +252,18 @@ Super important list:
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
 				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>
@@ -315,8 +272,7 @@ Super important list:
 	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
-<script src="../../assets/js/pages.js"></script>
 <script src="../../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../../assets/js/search.js"><' + '/script>');</script>
+<script>if (location.protocol == 'file:') document.write('<script src="../../assets/js/search.json"><' + '/script>');</script>
 </body>
 </html>

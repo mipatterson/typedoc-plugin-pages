@@ -73,12 +73,6 @@ describe("OptionValidator", () => {
 			expect(defaultOptionAndValidateIsBooleanMock).toHaveBeenCalledWith(minimalOptions, "replaceGlobalsPage", Constants.DEFAULT_REPLACE_GLOBALS_PAGE);
 		});
 
-		it("validates separatePluginNavigation", () => {
-			sut.validate(minimalOptions);
-
-			expect(defaultOptionAndValidateIsBooleanMock).toHaveBeenCalledWith(minimalOptions, "separatePluginNavigation", Constants.DEFAULT_SEPARATE_PLUGIN_NAVIGATION);
-		});
-
 		it("validates source", () => {
 			sut.validate(minimalOptions);
 

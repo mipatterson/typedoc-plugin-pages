@@ -159,7 +159,6 @@ export class PageRenderer {
 			item,
 			options: {
 				replaceGlobalsPage: this._options.replaceGlobalsPage,
-				separatePluginNavigation: this._options.separatePluginNavigation,
 			},
 			type,
 		};

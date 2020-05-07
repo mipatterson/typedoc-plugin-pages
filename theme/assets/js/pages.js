@@ -1,1 +1,0 @@
-var pagesPlugin = { search: { nameBoost: 10, contentBoost: 15 } };

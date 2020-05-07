@@ -19,7 +19,6 @@ export interface UrlMappingModelPluginMetadata {
 	item?: BaseItem;
 	options: {
 		replaceGlobalsPage: boolean;
-		separatePluginNavigation: boolean;
 	};
 	type?: ModelItemType;
 }
