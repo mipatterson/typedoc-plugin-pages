@@ -48,7 +48,7 @@
     "@types/puppeteer": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^2.23.0",
     "@typescript-eslint/parser": "^2.23.0",
-    "commitizen": "^4.0.3",
+    "commitizen": "^4.1.2",
     "connect": "^3.7.0",
     "copyfiles": "^2.2.0",
     "cz-conventional-changelog": "^3.1.0",
