@@ -52,7 +52,7 @@ To configure the plugin, create a `pagesconfig.json` file in the same directory 
 			"pages": [
 				{
 					"title": "My Page",
-					"path": "./documentation/sample/sample-page.md"
+					"source": "./documentation/sample/sample-page.md"
 				}
 			]
 		}
