@@ -31,6 +31,14 @@ export abstract class PageBase extends BaseItem {
 		}
 	}
 
+	public computeTitle(): void {
+		const content = this.contents;
+		if (content.startsWith("# ")) {
+			this._title = content.substr(2, content.indexOf("\n"));
+			this._contents = content.substr(content.indexOf("\n")+1);
+		}
+	}
+
 	public abstract get parent(): Page|PageGroup;
 
 	public get source(): string {

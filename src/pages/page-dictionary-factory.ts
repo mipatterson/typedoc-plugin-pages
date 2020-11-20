@@ -9,8 +9,11 @@ import { getFilename } from "../utilities/path-utilities";
 import { ChildPage, Page, PageDictionary, PageGroup, PageSection } from "./models/";
 
 // TODO: document this
-export class PageDictionaryFactory {
+export class PageDictionaryFactory {	
+	private options: PluginOptions;
+
 	public buildDictionary(options: PluginOptions): PageDictionary {
+		this.options = options;
 		const groups: PageGroup[] = [];
 
 		for (const group of options.groups) {
@@ -50,7 +53,10 @@ export class PageDictionaryFactory {
 
 	private _parsePage(definition: PageDefinition, parent: PageGroup): void {
 		const page = new Page(definition, parent);
-	
+		if (this.options.useMarkdownTitle) {
+			page.computeTitle();
+		}
+
 		// Get directory name for any child pages or sub-sections
 		const subDirectory = join(parent.url, getFilename(definition.output, true));
 	
@@ -70,6 +76,9 @@ export class PageDictionaryFactory {
 	}
 
 	private _parseChildPage(definition: ChildPageDefinition, urlPrefix: string, parent: Page): void {
-		new ChildPage(definition, urlPrefix, parent);
+		const page = new ChildPage(definition, urlPrefix, parent);
+		if (this.options.useMarkdownTitle) {
+			page.computeTitle();
+		}
 	}
 }

@@ -71,9 +71,17 @@ export interface PluginOptions {
 	replaceGlobalsPage?: boolean;
 
 	/**
+	 * Use first line title '# Title' if markdown starts with '# '
+	 * 
+	 * This defaults to false
+	 */
+	useMarkdownTitle?: boolean;
+
+	/**
 	 * Root directory where all page source files live
 	 * 
 	 * By default this will point to the directory that TypeDoc is run from.
 	 */
 	source?: string;
+
 }

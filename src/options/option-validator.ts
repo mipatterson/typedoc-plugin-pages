@@ -7,7 +7,7 @@ import { ChildPageDefinition, PageDefinition, PageGroupDefinition, PluginOptions
 import { defaultOptionAndValidateIsArray, defaultOptionAndValidateIsBoolean, defaultOptionAndValidateIsString,
 		validateOptionIsArray, validateOptionIsString } from "./validation-utilities";
 import * as Constants from "../constants";
-import { join } from "path";
+import { basename, join } from "path";
 import { ensurePathHasExtension, getFilename } from "../utilities/path-utilities";
 
 /**
@@ -78,8 +78,8 @@ export class OptionValidator {
 
 	private _validatePage(definition: PageDefinition|ChildPageDefinition, sourcePrefix: string, isChild: boolean): void {
 		try {
-			validateOptionIsString(definition, "title");
 			validateOptionIsString(definition, "source");
+			defaultOptionAndValidateIsString(definition, "title", basename(definition.source));
 			defaultOptionAndValidateIsString(definition, "output", getFilename(definition.source, true)); // Use source file name as default output file name
 
 

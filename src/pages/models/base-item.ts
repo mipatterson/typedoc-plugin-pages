@@ -3,7 +3,7 @@
  * @module Models
  */
 
-import { join } from "path";
+import { basename, join } from "path";
 import { ChildPageDefinition, PageDefinition, PageGroupDefinition, PageSectionDefinition } from "../../options/models/";
 
 // TODO: Document this
@@ -12,7 +12,7 @@ export abstract class BaseItem {
 	protected _url: string;
 
 	constructor(definition: PageDefinition|ChildPageDefinition|PageSectionDefinition|PageGroupDefinition, urlPrefix: string) {
-		this._title = definition.title;
+		this._title = definition.title || basename(definition.source);
 		this._url = join(urlPrefix, definition.output);
 	}
 

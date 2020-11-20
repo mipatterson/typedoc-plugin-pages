@@ -7,5 +7,5 @@
 export interface ChildPageDefinition {
 	output?: string;
 	source: string;
-	title: string;
+	title?: string;
 }
