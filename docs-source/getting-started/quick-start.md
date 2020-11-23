@@ -56,7 +56,7 @@ To configure the plugin, create a `pagesconfig.json` file in the same directory 
 				}
 			]
 		}
-	]
+	],
 	"theme": "pages-plugin"
 }
 ```
