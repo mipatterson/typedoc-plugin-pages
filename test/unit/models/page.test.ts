@@ -86,6 +86,18 @@ describe("Page", () => {
 
 			expect(() => sut.contents).toThrow();
 		})
+				
+		test("returns the contents of the file with title substitution", () => {
+			const readFileSyncMock = jest.fn();
+			readFileSyncMock.mockReturnValue("# Title\nfile contents");
+			(fs as any).readFileSync = readFileSyncMock;
+
+			sut.computeTitle();
+			expect(sut.contents).toBe("file contents");
+			console.log(sut.title);
+			expect(sut.title).toBe("Title");
+			expect(readFileSyncMock).toHaveBeenCalledWith(definition.source, "utf8");
+		});
 	});
 
 	describe("url", () => {
