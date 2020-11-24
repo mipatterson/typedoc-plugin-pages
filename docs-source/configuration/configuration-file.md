@@ -19,13 +19,13 @@ If you are configuring TypeDoc via the `typedoc.json` configuration file, you ca
 	"pages": {
 		"groups": [],
 		"output": "pages",
-		"useMarkdownTitle": true
+		"autoDetectPageTitle": true
 	}
 }
 ```
 
 ```
-useMarkdownTitle: boolean // Use title from first line of Markdown files
+autoDetectPageTitle: boolean // Use title from first line of Markdown files
 ```
 
 ## 2. Use a dedicated `pagesconfig.json` file

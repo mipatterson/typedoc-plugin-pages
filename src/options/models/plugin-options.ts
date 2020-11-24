@@ -75,7 +75,7 @@ export interface PluginOptions {
 	 * 
 	 * This defaults to false
 	 */
-	useMarkdownTitle?: boolean;
+	autoDetectPageTitle?: boolean;
 
 	/**
 	 * Root directory where all page source files live

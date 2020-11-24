@@ -53,7 +53,7 @@ export class PageDictionaryFactory {
 
 	private _parsePage(definition: PageDefinition, parent: PageGroup): void {
 		const page = new Page(definition, parent);
-		if (this.options.useMarkdownTitle) {
+		if (this.options.autoDetectPageTitle) {
 			page.computeTitle();
 		}
 
@@ -77,7 +77,7 @@ export class PageDictionaryFactory {
 
 	private _parseChildPage(definition: ChildPageDefinition, urlPrefix: string, parent: Page): void {
 		const page = new ChildPage(definition, urlPrefix, parent);
-		if (this.options.useMarkdownTitle) {
+		if (this.options.autoDetectPageTitle) {
 			page.computeTitle();
 		}
 	}
