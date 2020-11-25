@@ -19,11 +19,11 @@ To add a page as a child of another page, simply add the child page as an object
 				"pages": [
 					{
 						"title": "Parent Page",
-						"path": "./path/to/parent-page.md",
+						"source": "./path/to/parent-page.md",
 						"children": [
 							{
 								"title": "Child Page",
-								"path": "./path/to/child-page.md"
+								"source": "./path/to/child-page.md"
 							}
 						]
 					}
