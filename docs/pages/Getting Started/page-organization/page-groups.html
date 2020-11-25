@@ -74,26 +74,10 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<a href="#overview" id="overview" style="color: inherit; text-decoration: none;">
-					<h2>Overview</h2>
-				</a>
 				<p>Page groups can be used to group collections of pages that are related to one another.</p>
-				<p>Each page group and its member pages will be displayed as a group of navigation items in the navigation sidebar.</p>
-				<a href="#when-to-use-page-groups" id="when-to-use-page-groups" style="color: inherit; text-decoration: none;">
-					<h2>When to use page groups</h2>
-				</a>
-				<p>Page groups should be used to group related pages in two scenarios:</p>
-				<a href="#1-top-level-page-content" id="1-top-level-page-content" style="color: inherit; text-decoration: none;">
-					<h3>1. Top-level page content</h3>
-				</a>
-				<p>All top-level pages are organized into groups. You may have as few as one groups defined.</p>
-				<a href="#2-page-sections" id="2-page-sections" style="color: inherit; text-decoration: none;">
-					<h3>2. Page sections</h3>
-				</a>
-				<p>To avoid overcrowding the navigation sidebar, groups can also be split up into sections. Page sections serve as a collection of page groups.</p>
-				<p>See <a href="page-sections.html">Page Sections</a> for more information.</p>
-				<a href="#creating-groups" id="creating-groups" style="color: inherit; text-decoration: none;">
-					<h2>Creating Groups</h2>
+				<p>Each page group and its member pages will be displayed as a group of navigation items in the navigation sidebar. Your plugin must specify at least one group, because all top-level pages must be in a group.</p>
+				<a href="#creating-page-groups" id="creating-page-groups" style="color: inherit; text-decoration: none;">
+					<h2>Creating Page Groups</h2>
 				</a>
 				<p>Follow these steps to create a page group:</p>
 				<ol>
@@ -104,16 +88,17 @@
     <span class="hljs-attr">"pages"</span>: []
 }</code></pre>
 				<ol start="2">
-					<li>Add the group definition JSON to either:</li>
+					<li><p>Add the group definition JSON to either:</p>
+						<ul>
+							<li>The top-level <code>groups</code> array</li>
+							<li>The <code>groups</code> array of a page section (See <a href="page-sections.html">Page Sections</a> for more information.)</li>
+						</ul>
+					</li>
 				</ol>
-				<ul>
-					<li>The top-level <code>groups</code> array</li>
-					<li>The <code>groups</code> array of a page section</li>
-				</ul>
 				<a href="#group-options" id="group-options" style="color: inherit; text-decoration: none;">
 					<h2>Group Options</h2>
 				</a>
-				<p>In addition to the required <code>title</code> and <code>pages</code> properties, page groups definitions support two optional properties:</p>
+				<p>In addition to the required <code>title</code> and <code>pages</code> properties, page group definitions support two optional properties:</p>
 				<a href="#1-output" id="1-output" style="color: inherit; text-decoration: none;">
 					<h3>1. Output</h3>
 				</a>
