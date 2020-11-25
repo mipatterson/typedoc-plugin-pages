@@ -1,6 +1,6 @@
 ## Organization Options
 
-Your pages can be organized in several different ways. You can group pages in the following ways:
+Your pages can be organized in several different ways:
 
 1. [Page groups](#1-page-groups)
 2. [Child pages](#2-child-pages)
@@ -10,13 +10,13 @@ Your pages can be organized in several different ways. You can group pages in th
 
 Page groups can be used to group collections of pages that are related to one another.
 
-Each page group and its member pages will be displayed as a group of navigation items in the navigation sidebar.
+Pages in the same page group will be displayed together under the same group header in the navigation sidebar.
 
 See {@page Page Groups} for more information.
 
 ### 2. Child pages
 
-Pages can also be nested as children of other pages. This provides a way to breakup related content when there is too much content to group as different sections on a single page.
+Pages can also be nested as children of other pages.
 
 > 💡 Note that child pages cannot have children of their own.
 
