@@ -1,3 +1,0 @@
-It is possible to integrate the TypeDoc Pages Plugin with your own custom themes by making a few changes to your theme:
-
-More information coming soon...
