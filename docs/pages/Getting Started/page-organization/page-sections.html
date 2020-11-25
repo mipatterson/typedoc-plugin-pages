@@ -74,6 +74,100 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<p>Sometimes you may have so many pages that the navigation sidebar feels cluttered, even when using child pages. Page sections can be used to simplify the navigation structure.</p>
+				<p>Page sections do not have a source file associated with them, but instead have their own nested groups. When the user clicks a page section link in the navigation sidebar, the groups that are nested under that section will be displayed in the sidebar and the previous groups will disappear. Additionally, a new link will be added to the top of the navigation sidebar allowing users to navigate back to the parent groups.</p>
+				<a href="#creating-page-sections" id="creating-page-sections" style="color: inherit; text-decoration: none;">
+					<h2>Creating Page Sections</h2>
+				</a>
+				<p>Follow these steps to create a page section:</p>
+				<ol>
+					<li>Create a JSON definition for the section:</li>
+				</ol>
+				<pre><code class="language-json">{
+    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"My Group"</span>,
+    <span class="hljs-attr">"groups"</span>: []
+}</code></pre>
+				<ol start="2">
+					<li><p>Add the section definition JSON to either:</p>
+						<ul>
+							<li>The <code>pages</code> array of a page group</li>
+							<li>The <code>children</code> array of a parent page</li>
+						</ul>
+					</li>
+				</ol>
+				<a href="#section-options" id="section-options" style="color: inherit; text-decoration: none;">
+					<h2>Section Options</h2>
+				</a>
+				<p>In addition to the required <code>title</code> and <code>groups</code> properties, page section definitions support two optional properties:</p>
+				<a href="#1-output" id="1-output" style="color: inherit; text-decoration: none;">
+					<h3>1. Output</h3>
+				</a>
+				<p>The optional <code>output</code> property supports configuring the name of the directory that pages and groups within the section are rendered to.</p>
+				<blockquote>
+					<p>👉 For example, the following page definiton would be rendered to <code>outer-group/my-section/inner-group/my-page.html</code>:</p>
+				</blockquote>
+				<pre><code class="language-json">{
+    <span class="hljs-attr">"groups"</span>: [
+        {
+            <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Outer Group"</span>,
+            <span class="hljs-attr">"output"</span>: <span class="hljs-string">"outer-group"</span>,
+            <span class="hljs-attr">"pages"</span>: [
+                {
+                    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"My Section"</span>,
+                    <span class="hljs-attr">"output"</span>: <span class="hljs-string">"my-section"</span>,
+                    <span class="hljs-attr">"groups"</span>: [
+                        {
+                            <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Inner Group"</span>,
+                            <span class="hljs-attr">"output"</span>: <span class="hljs-string">"inner-group"</span>,
+                            <span class="hljs-attr">"pages"</span>: [
+                                {
+                                    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"My Page"</span>,
+                                    <span class="hljs-attr">"source"</span>: <span class="hljs-string">"my-page.md"</span>,
+                                    <span class="hljs-attr">"output"</span>: <span class="hljs-string">"my-page.html"</span>
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}</code></pre>
+				<p>If no <code>output</code> property is provided, the section&#39;s title will be used as the default value.</p>
+				<a href="#2-source" id="2-source" style="color: inherit; text-decoration: none;">
+					<h3>2. Source</h3>
+				</a>
+				<p>The optional <code>source</code> property allows you to configure a default path prefix for the <code>source</code> property of each group within the section.</p>
+				<blockquote>
+					<p>👉 For example, the following page would be read from <code>outer-group/my-section/inner-group/my-page.md</code>:</p>
+				</blockquote>
+				<pre><code class="language-json">{
+    <span class="hljs-attr">"groups"</span>: [
+        {
+            <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Outer Group"</span>,
+            <span class="hljs-attr">"source"</span>: <span class="hljs-string">"outer-group"</span>,
+            <span class="hljs-attr">"pages"</span>: [
+                {
+                    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"My Section"</span>,
+                    <span class="hljs-attr">"source"</span>: <span class="hljs-string">"my-section"</span>,
+                    <span class="hljs-attr">"groups"</span>: [
+                        {
+                            <span class="hljs-attr">"title"</span>: <span class="hljs-string">"Inner Group"</span>,
+                            <span class="hljs-attr">"source"</span>: <span class="hljs-string">"inner-group"</span>,
+                            <span class="hljs-attr">"pages"</span>: [
+                                {
+                                    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"My Page"</span>,
+                                    <span class="hljs-attr">"source"</span>: <span class="hljs-string">"my-page.md"</span>,
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}</code></pre>
+				<p>By default, no source path prefix is applied when the <code>source</code> property is omitted.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">

@@ -1,6 +1,12 @@
-You can add pages as children of other pages. These will display as indented links under their parent page in the navigation sidebar. Child pages may **not** have their own children. However, they can have sub-groups. See {@page Sub-Groups} for more information.
+Child pages can be used to nest pages as children under other pages.
 
-To add a page as a child of another page, simply add the child page as an object in a "children" array property on the parent page's definition:
+In the built-in plugin theme, these will display as indented links under their parent page in the navigation sidebar and will only display when the page, its parent page, or a sibling page is active.
+
+Child pages may **not** have their own children.
+
+## Creating Child Pages
+
+To add a page as a child of another page, simply add the child page as an object in a `children` array property on the parent page's definition:
 
 #### `typedoc.json`
 
@@ -29,4 +35,4 @@ To add a page as a child of another page, simply add the child page as an object
 }
 ```
 
-The "children" property is optional. Not specifying a "children" property on your page definition is the same as specifying the property as an empty array.
+The `children` property is optional. Not specifying a `children` property on your page definition is the same as specifying the property as an empty array.

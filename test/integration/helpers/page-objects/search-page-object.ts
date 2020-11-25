@@ -46,7 +46,7 @@ export class SearchPageObject {
 			// Execute query
 			await this._page.keyboard.type(query);
 
-			await new Promise<void>(res => setTimeout(res, 2000));
+			await new Promise<void>(res => setTimeout(res, 10000));
 
 			// Parse results
 			const resultEls = await this._page.$$("ul.results li");

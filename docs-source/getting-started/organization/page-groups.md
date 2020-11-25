@@ -1,24 +1,8 @@
-## Overview
-
 Page groups can be used to group collections of pages that are related to one another.
 
-Each page group and its member pages will be displayed as a group of navigation items in the navigation sidebar.
+Each page group and its member pages will be displayed as a group of navigation items in the navigation sidebar. Your plugin must specify at least one group, because all top-level pages must be in a group.
 
-## When to use page groups
-
-Page groups should be used to group related pages in two scenarios:
-
-### 1. Top-level page content
-
-All top-level pages are organized into groups. You may have as few as one groups defined.
-
-### 2. Page sections
-
-To avoid overcrowding the navigation sidebar, groups can also be split up into sections. Page sections serve as a collection of page groups.
-
-See {@page Page Sections} for more information.
-
-## Creating Groups
+## Creating Page Groups
 
 Follow these steps to create a page group:
 
@@ -33,12 +17,12 @@ Follow these steps to create a page group:
 
 2. Add the group definition JSON to either:
 
-- The top-level `groups` array
-- The `groups` array of a page section
+	- The top-level `groups` array
+	- The `groups` array of a page section (See {@page Page Sections} for more information.)
 
 ## Group Options
 
-In addition to the required `title` and `pages` properties, page groups definitions support two optional properties:
+In addition to the required `title` and `pages` properties, page group definitions support two optional properties:
 
 ### 1. Output
 

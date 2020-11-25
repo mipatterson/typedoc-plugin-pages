@@ -11,7 +11,6 @@
 - 🔗 Interpage hyperlinks
 - 🎨 Integrated Theme
 - 📑 Reflection Navigation Title Customization
-- ✏️ Integrated spell-checking (coming soon...)
 
 ## Demo
 
@@ -29,4 +28,4 @@ See the [Quick Start](https://mipatterson.github.io/typedoc-plugin-pages/pages/G
 
 ## Supported Versions of TypeDoc
 
-This plugin is designed to work with as many versions of TypeDoc as possible. It has been tested with the following versions `0.16.5` through `0.17.6`. If you are reporting an issue, please include the version of TypeDoc you are using the plugin with.
+This plugin is designed to work with as many versions of TypeDoc as possible. It has been tested with the versions `0.16.5` through `0.19.2`. If you are reporting an issue, please include the version of TypeDoc you are using the plugin with.
