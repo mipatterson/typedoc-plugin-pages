@@ -86,8 +86,8 @@
 				<ol>
 					<li><p>Add a Handlebars template for rendering your Markdown pages</p>
 						<p> Inside your theme&#39;s <code>templates</code> directory create a new Handlebars file, <code>markdown-page.hbs</code> with the following contents:</p>
-						<pre><code class="language-handlebars"><span class="xml"> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tsd-panel tsd-typography"</span>&gt;</span>
-     </span><span class="hljs-template-tag">{{#<span class="hljs-name">markdown</span>}}</span><span class="hljs-template-variable">{{{model.pagesPlugin.item.contents}}}</span><span class="hljs-template-tag">{{/<span class="hljs-name">markdown</span>}}</span><span class="xml">
+						<pre><code class="language-handlebars"><span class="xml"> <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;tsd-panel tsd-typography&quot;</span>&gt;</span>
+     </span><span class="hljs-template-tag">{{#<span class="hljs-name">markdown</span>}}</span><span class="hljs-template-variable">{{{<span class="hljs-name">model.pagesPlugin.item.contents</span>}}}</span><span class="hljs-template-tag">{{/<span class="hljs-name">markdown</span>}}</span><span class="xml">
  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre>
 						<p> This is the file that will be responsible for rendering your Markdown pages. You may modify this file to meet the needs of your theme.</p>
 					</li>
@@ -111,8 +111,8 @@
   <span class="hljs-attribute">vertical-align</span>: middle;
   <span class="hljs-attribute">height</span>: <span class="hljs-number">16px</span>;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">16px</span>;
-  <span class="hljs-attribute">content</span>: <span class="hljs-string">""</span>;
-  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">"../images/page-icon.svg"</span>);
+  <span class="hljs-attribute">content</span>: <span class="hljs-string">&quot;&quot;</span>;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&quot;../images/page-icon.svg&quot;</span>);
   <span class="hljs-attribute">background-size</span>: <span class="hljs-number">16px</span> <span class="hljs-number">16px</span>;
 }</code></pre>
 								<p>The above code sample will use the image located at <code>/assets/images/page-icon.svg</code> for the search result icon. You can find a sample icon image in the built-in theme, <a href="https://github.com/mipatterson/typedoc-plugin-pages/blob/master/theme/v2/assets/images/page-icon.svg">here</a>.</p>

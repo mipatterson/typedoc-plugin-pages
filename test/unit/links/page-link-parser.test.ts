@@ -5,43 +5,63 @@ import { PluginOptions } from "../../../src/options/models";
 import { PageDictionary, Page, PageGroup } from "../../../src/pages/models";
 import { Logger } from "typedoc/dist/lib/utils";
 
-interface ITestCase {
+interface TestCase {
 	title: string;
 	input: string;
 	output: string;
-	invalidLinks: string[];
+	invalidLinks?: string[];
 }
 
-const testCases: ITestCase[] = [
+const testCases: TestCase[] = [
 	{
 		title: "No page links",
 		input: "This is sample text.",
 		output: "This is sample text.",
-		invalidLinks: [],
 	},
 	{
 		title: "Basic @page tag",
 		input: "See {@page Something} for more information.",
 		output: `See <a href="/something/url.html">Something</a> for more information.`,
-		invalidLinks: [],
 	},
 	{
 		title: "Basic @pagelink tag",
 		input: "See {@pagelink Something} for more information.",
 		output: `See <a href="/something/url.html">Something</a> for more information.`,
-		invalidLinks: [],
 	},
 	{
 		title: "Multiple @page tags",
 		input: "See {@page Something} for more information about {@page Feature}.",
 		output: `See <a href="/something/url.html">Something</a> for more information about <a href="/feature/url.html">Feature</a>.`,
-		invalidLinks: [],
 	},
 	{
 		title: "Space in page title",
 		input: "See {@pagelink Something Here} for more information.",
 		output: `See <a href="/something/here/url.html">Something Here</a> for more information.`,
-		invalidLinks: [],
+	},
+	{
+		title: "Custom link text (no spaces)",
+		input: "See {@page Something Here|custom text} for more information.",
+		output: `See <a href="/something/here/url.html">custom text</a> for more information.`,
+	},
+	{
+		title: "Custom link text (leading and trailing spaces)",
+		input: "See {@page Something Here | custom text} for more information.",
+		output: `See <a href="/something/here/url.html">custom text</a> for more information.`,
+	},
+	{
+		title: "Custom link text (leading space)",
+		input: "See {@page Something Here |custom text} for more information.",
+		output: `See <a href="/something/here/url.html">custom text</a> for more information.`,
+	},
+	{
+		title: "Custom link text (trailing space)",
+		input: "See {@page Something Here| custom text} for more information.",
+		output: `See <a href="/something/here/url.html">custom text</a> for more information.`,
+	},
+	{
+		title: "Sanitizes newlines",
+		input: "See {@page \nSomething\nHere|\ncustom text\n} for more information.",
+		output: `See <a href="/something/here/url.html">custom text</a> for more information.`,
 	},
 	{
 		title: "Invalid page title",
@@ -59,7 +79,6 @@ const testCases: ITestCase[] = [
 		title: "Group @page tag",
 		input: "See {@page Group Title} for more information.",
 		output: `See <a href="url.html">Group Title</a> for more information.`,
-		invalidLinks: [],
 	},
 	{
 		title: "Empty group @page tag",
@@ -78,21 +97,6 @@ describe("PageLinkParser", () => {
 	let loggerMock: IMock<Logger>;
 
 	let sut: PageLinkParser;
-
-	beforeEach(() => {
-		optionsMock = Mock.ofType<PluginOptions>();
-		pageDictionaryMock = Mock.ofType<PageDictionary>();
-		loggerMock = Mock.ofType<Logger>();
-
-		addPageToDictionary("Something", "/something/url.html");
-		addPageToDictionary("Something Here", "/something/here/url.html");
-		addPageToDictionary("Feature", "/feature/url.html");
-		addGroupToDictionary("Group Title", "url.html");
-		addGroupToDictionary("Empty Group");
-
-		sut = new PageLinkParser(optionsMock.object, pageDictionaryMock.object, loggerMock.object);
-		(sut as any)._getRelativeUrl = (absoluteUrl: string, relativeTo: string) => absoluteUrl;
-	});
 
 	function addPageToDictionary(title: string, url: string): void {
 		const pageMock = Mock.ofType<Page>();
@@ -119,6 +123,21 @@ describe("PageLinkParser", () => {
 		pageDictionaryMock.setup(m => m.getByTitle(title)).returns(() => group);
 	}
 
+	beforeEach(() => {
+		optionsMock = Mock.ofType<PluginOptions>();
+		pageDictionaryMock = Mock.ofType<PageDictionary>();
+		loggerMock = Mock.ofType<Logger>();
+
+		addPageToDictionary("Something", "/something/url.html");
+		addPageToDictionary("Something Here", "/something/here/url.html");
+		addPageToDictionary("Feature", "/feature/url.html");
+		addGroupToDictionary("Group Title", "url.html");
+		addGroupToDictionary("Empty Group");
+
+		sut = new PageLinkParser(optionsMock.object, pageDictionaryMock.object, loggerMock.object);
+		(sut as any)._getRelativeUrl = (absoluteUrl: string): string => absoluteUrl;
+	});
+
 	function enableFeatures(parsing: boolean, invalidLinkLogging: boolean, failOnInvalidLink: boolean): void {
 		optionsMock.reset();
 		optionsMock.setup(m => m.enablePageLinks).returns(() => parsing);
@@ -126,7 +145,7 @@ describe("PageLinkParser", () => {
 		optionsMock.setup(m => m.failBuildOnInvalidPageLink).returns(() => failOnInvalidLink);
 	}
 
-	function prepareTestCase(testCase: ITestCase): MarkdownEvent {
+	function prepareTestCase(testCase: TestCase): MarkdownEvent {
 		// Prepare page event and pass to sut
 		const pageEventMock = Mock.ofType<PageEvent>();
 		pageEventMock.setup(m => m.model).returns(() => {
@@ -192,7 +211,7 @@ describe("PageLinkParser", () => {
 					}
 	
 					// assert
-					if (testCase.invalidLinks.length > 0) {
+					if (testCase.invalidLinks && testCase.invalidLinks.length > 0) {
 						expect(error).toBeDefined();
 						expect(event.parsedText).toEqual(testCase.input);
 					} else {
@@ -226,8 +245,10 @@ describe("PageLinkParser", () => {
 			enableFeatures(true, true, false);
 			let expectedLog = INVALID_LINKS_HEADER_STRING;
 			for (const testCase of testCases) {
-				for (const link of testCase.invalidLinks) {
-					expectedLog += `\n  In ${currentPageTitle}: ${link}`;
+				if (testCase.invalidLinks) {
+					for (const link of testCase.invalidLinks) {
+						expectedLog += `\n  In ${currentPageTitle}: ${link}`;
+					}
 				}
 				const event = prepareTestCase(testCase);
 				sut.parsePageLinks(event);

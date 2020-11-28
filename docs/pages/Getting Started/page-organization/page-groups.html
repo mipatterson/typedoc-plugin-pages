@@ -84,8 +84,8 @@
 					<li>Create a JSON definition for the group:</li>
 				</ol>
 				<pre><code class="language-json">{
-    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"My Group"</span>,
-    <span class="hljs-attr">"pages"</span>: []
+    <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;My Group&quot;</span>,
+    <span class="hljs-attr">&quot;pages&quot;</span>: []
 }</code></pre>
 				<ol start="2">
 					<li><p>Add the group definition JSON to either:</p>
@@ -107,15 +107,15 @@
 					<p>👉 For example, the following page definiton would be rendered to <code>my-group/my-page.html</code>:</p>
 				</blockquote>
 				<pre><code class="language-json">{
-    <span class="hljs-attr">"groups"</span>: [
+    <span class="hljs-attr">&quot;groups&quot;</span>: [
         {
-            <span class="hljs-attr">"title"</span>: <span class="hljs-string">"My Group"</span>,
-            <span class="hljs-attr">"output"</span>: <span class="hljs-string">"my-group"</span>,
-            <span class="hljs-attr">"pages"</span>: [
+            <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;My Group&quot;</span>,
+            <span class="hljs-attr">&quot;output&quot;</span>: <span class="hljs-string">&quot;my-group&quot;</span>,
+            <span class="hljs-attr">&quot;pages&quot;</span>: [
                 {
-                    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"My Page"</span>,
-                    <span class="hljs-attr">"source"</span>: <span class="hljs-string">"my-page.md"</span>,
-                    <span class="hljs-attr">"output"</span>: <span class="hljs-string">"my-page.html"</span>
+                    <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;My Page&quot;</span>,
+                    <span class="hljs-attr">&quot;source&quot;</span>: <span class="hljs-string">&quot;my-page.md&quot;</span>,
+                    <span class="hljs-attr">&quot;output&quot;</span>: <span class="hljs-string">&quot;my-page.html&quot;</span>
                 }
             ]
         }
@@ -130,14 +130,14 @@
 					<p>👉 For example, the following page would be read from <code>my-group/my-page.md</code>:</p>
 				</blockquote>
 				<pre><code class="language-json">{
-    <span class="hljs-attr">"groups"</span>: [
+    <span class="hljs-attr">&quot;groups&quot;</span>: [
         {
-            <span class="hljs-attr">"title"</span>: <span class="hljs-string">"My Group"</span>,
-            <span class="hljs-attr">"source"</span>: <span class="hljs-string">"my-group"</span>,
-            <span class="hljs-attr">"pages"</span>: [
+            <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;My Group&quot;</span>,
+            <span class="hljs-attr">&quot;source&quot;</span>: <span class="hljs-string">&quot;my-group&quot;</span>,
+            <span class="hljs-attr">&quot;pages&quot;</span>: [
                 {
-                    <span class="hljs-attr">"title"</span>: <span class="hljs-string">"My Page"</span>,
-                    <span class="hljs-attr">"source"</span>: <span class="hljs-string">"my-page.md"</span>,
+                    <span class="hljs-attr">&quot;title&quot;</span>: <span class="hljs-string">&quot;My Page&quot;</span>,
+                    <span class="hljs-attr">&quot;source&quot;</span>: <span class="hljs-string">&quot;my-page.md&quot;</span>,
                 }
             ]
         }
