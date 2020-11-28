@@ -99,11 +99,28 @@ export class PageLinkParser {
 	 */
 	private _handlePageLink = (match: string, leading: string, tagName: string, linkText: string): string => { // TODO: Figure out how to handle multiple hits or page sections
 		try {
+			let pageTitle: string;
+			let linkCaption: string;
+
+			// Sanitize link text
+			const sanitizedLinkText = linkText.replace(/\n+/, " ").trim();
+
+			// Parse provided text for page title and caption text
+			const pipeIndex = sanitizedLinkText.indexOf("|");
+			if (pipeIndex > -1) {
+				pageTitle = sanitizedLinkText.substr(0, pipeIndex).trim();
+				linkCaption = sanitizedLinkText.substr(pipeIndex + 1).trim();
+			} else {
+				// If no alternate caption text is provided, use page title
+				pageTitle = sanitizedLinkText;
+				linkCaption = sanitizedLinkText;
+			}
+
 			// Attempt to find page or group with provided title
-			const item = this._pages.getByTitle(linkText);
+			const item = this._pages.getByTitle(pageTitle);
 
 			if (!item) {
-				throw new Error(`Failed to find page or group with title "${linkText}"`);
+				throw new Error(`Failed to find page or group with title "${pageTitle}"`);
 			}
 
 			let url = item.url;
@@ -122,7 +139,7 @@ export class PageLinkParser {
 			const relativeUrl = this._getRelativeUrl(url, this._currentPageUrl);
 
 			// Replace the page link tag with a HTML hyperlink
-			return `<a href="${relativeUrl}">${linkText}</a>`;
+			return `<a href="${relativeUrl}">${linkCaption}</a>`;
 		} catch (e) {
 			if (this._options.failBuildOnInvalidPageLink) {
 				throw new Error(`Found invalid page link tag "${match}" on page "${this._currentPageTitle}": ${e.message}`);
