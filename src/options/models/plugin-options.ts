@@ -63,7 +63,8 @@ export interface PluginOptions {
 	 * 
 	 * The effect of this is that the "Globals" link in the header breadcrumbs will be replaced 
 	 * with a "Home" page that links directly to the root README page and the Globals link in the
-	 * navigation sidebar will be hidden.
+	 * navigation sidebar will be hidden. Note that this option is only respected when the
+	 * plugin's built-in theme is used.
 	 * 
 	 * This defaults to false.
 	 */

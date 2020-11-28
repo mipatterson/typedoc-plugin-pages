@@ -13,6 +13,22 @@ This plugin supports `@page` and `@pagelink` tags which allow you to create link
 See {@page Advanced Usage} for more information.
 ```
 
+#### Custom Text
+
+You can control the rendered link text using the same "pipe" syntax that TypeDoc supports for its `@link` tags.
+
+For example, this syntax:
+
+```markdown
+See {@page Advanced Usage | this page} for more information.
+```
+
+will be rendered as:
+
+```html
+See <a href="/path/to/advanced/usage/page.md">this page</a> for more information.
+```
+
 #### Disabling Page Links
 
 Page links are enabled by default. To disable page links, set the {@link PluginOptions.enablePageLinks} option to `false`.

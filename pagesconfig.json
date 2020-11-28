@@ -85,35 +85,11 @@
 					"groups": [
 						{
 							"output": "basic",
-							"title": "Custom Theme Basics",
-							"source": "basics",
+							"title": "Custom Themes",
 							"pages": [
 								{
 									"title": "Overview",
 									"source": "./overview.md"
-								},
-								{
-									"title": "Page Rendering",
-									"source": "./page-rendering.md"
-								},
-								{
-									"title": "Navigation Rendering",
-									"source": "./navigation-rendering.md"
-								}
-							]
-						},
-						{
-							"output": "advanced",
-							"title": "Advanced Custom Themes",
-							"source": "advanced",
-							"pages": [
-								{
-									"title": "Search Integration",
-									"source": "search-integration.md"
-								},
-								{
-									"title": "Customizing Template Names",
-									"source": "customizing-template-names.md"
 								}
 							]
 						}
