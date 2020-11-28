@@ -82,6 +82,14 @@
 				</a>
 				<p>This plugin supports <code>@page</code> and <code>@pagelink</code> tags which allow you to create links to pages based on their titles. For example, the below Markdown will produce a link to the page entitled &quot;Advanced Usage&quot;.</p>
 				<pre><code class="language-markdown">See {@page Advanced Usage} for more information.</code></pre>
+				<a href="#custom-text" id="custom-text" style="color: inherit; text-decoration: none;">
+					<h4>Custom Text</h4>
+				</a>
+				<p>You can control the rendered link text using the same &quot;pipe&quot; syntax that TypeDoc supports for its <code>@link</code> tags.</p>
+				<p>For example, this syntax:</p>
+				<pre><code class="language-markdown">See {@page Advanced Usage | this page} for more information.</code></pre>
+				<p>will be rendered as:</p>
+				<pre><code class="language-html">See <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;/path/to/advanced/usage/page.md&quot;</span>&gt;</span>this page<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span> for more information.</code></pre>
 				<a href="#disabling-page-links" id="disabling-page-links" style="color: inherit; text-decoration: none;">
 					<h4>Disabling Page Links</h4>
 				</a>
