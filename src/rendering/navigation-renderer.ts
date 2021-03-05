@@ -136,7 +136,8 @@ export class NavigationRenderer {
 	private _removeGlobalsNavigationItem(event: PageEvent): void {
 		if (this._options.replaceGlobalsPage) {
 			for (let i = 0; i < event.navigation.children.length; i++) {
-				if (event.navigation.children[i].isGlobals) {
+				let children = event.navigation.children[i];
+				if (children.isGlobals || children.isModules) {
 					event.navigation.children.splice(i, 1);
 				}
 			}
