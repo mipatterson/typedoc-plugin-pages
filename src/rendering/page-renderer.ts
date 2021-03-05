@@ -64,7 +64,7 @@ export class PageRenderer {
 	}
 
 	private _getGlobalsUrlMapping(event: RendererEvent): UrlMapping {
-		return event.urls.filter((mapping: UrlMapping): boolean => mapping.url === "globals.html")[0];
+		return event.urls.filter((mapping: UrlMapping): boolean => mapping.url === "globals.html" || mapping.url==="modules.html")[0];
 	}
 
 	/**
