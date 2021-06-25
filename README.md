@@ -1,4 +1,7 @@
-# typedoc-plugin-pages
+# typedoc-plugin-loopingz-pages
+
+The project is a fork of [typedoc-plugin-pages](https://github.com/mipatterson/typedoc-plugin-pages)
+The original author seems to be busy, so creating the fork
 
 > A TypeDoc plugin that lets you integrate your own pages into the documentation output
 
